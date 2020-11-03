@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name = "viewport" content="width=device-width, inital-scale = 1"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+        <!--################################################################################################-->
+                                            <!-- S T Y L E -->
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet"><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+        <div class="page-wrapper">
+            <nav id="navbar">
+                <a href="#sectionLink1">Home</a>
+                <a href="#sectionLink2">About</a>
+                <a onclick="ToggleClass('mapsID', 'maximize_right'); ToggleClass('mapsiframe', 'gmapsfade')">Location</a>
+                <a onclick="ToggleClass('bookingID', 'maximize_right'); ToggleClass('bookingID', 'gmapsfade')">Contact</a>
+            </nav>
+            <div class="header" id="section1">
+                <div class="background"></div>
+                <div class="banner" id="banner">
+                    <h1 class="anim">
+                        <span class="text-wrapper">
+                        <span class="letters">Villa Karukera</span>
+                        </span>
+                    </h1>
+                    <p id="naslov_sub">A vacation made for you</p>
+                </div>
+                <div class="waves">
+                    <div class="wave1"></div>
+                    <div class="wave2"></div>
+                    <div class="wave3"></div>
+                    <div class="wave4"></div>
+                </div>
+                
+            </div>
+            <!-- CONTENT START-->
+            <div class="containter content" id="section2">
+                <div class="row">
+                    <div class="col-md-6 text" data-aos="fade-right"  data-aos-duration="1000">
+                        <h2>Welcome to <span>villa Karukera</span></h2>
+                        <p>Our house is located directly at the sea in mediterranean pearl 
+                            Rovanjska, 20 km northeast from Zadar. Just a few 
+                            minutes ride from the highway to get to us and there are 
+                            some restaurants, bars and a shop nearby.</p>
+                    </div>
+
+                    <div class="col-md-6 gallery">
+                        <img src="img/house/house_part2.jpg" id="house" data-aos="fade-zoom-in" data-aos-anchor-placement="top-center" data-aos="ease-out-sin" data-aos-duration="1000">
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-6 order-md-first order-last gallery">
+                        <div class="carousel" onclick="next('carousel_item')">
+                            <div  data-aos="fade-zoom-in" data-aos-anchor-placement="top-center" data-aos="ease-out-sin" data-aos-duration="2000">
+                                <img src="img/house/terasa.jpg" class="carousel_item active flip">
+                                <img src="img/house/terasa_lounge.jpg" class="carousel_item">
+                                <img src="img/house/gym.jpg" class="carousel_item">
+                            </div>
+                            <div class="circle-multiple" data-aos="fade-zoom-in" data-aos-anchor-placement="top-center" data-aos="ease-out-sin" data-aos-duration="1000">
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 order-md-last order-first text" data-aos="fade-left" data-aos-anchor-placement="top-center" data-aos-duration="1000">
+                        <h2><span>Sunsets</span> to remember</h2>
+                        <p>Whether its from the open interior, outdoor pool area or 
+                            the rooftop jacuzzi & lounge space, the sunsets in Rovanjska 
+                            are simply unforgettable. Furthermore, if swimming isn't enough
+                            exercise for you, we've included an inside gym.</p>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    
+                    <div class="col-md-6 text" data-aos="fade-right" data-aos-anchor-placement="top-center" data-aos-duration="1000">
+                        <h2>Fairytale <span>daytrips</span></h2>
+                        <p>Some of the worlds greatest sights, at the palm of your hand.
+                            Enjoy Maslenica bridge bungee, Zrmanja canyon, mighty Velebit mountain, 
+                            and a total of five national parks at your disposal.
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 gallery">
+                        <div class="carousel" onclick="next('carousel_item_b')">
+                            <div  data-aos="fade-zoom-in" data-aos-anchor-placement="top-center" data-aos="ease-out-sin" data-aos-duration="1000">
+                                <img src="img/most.jpg" class="carousel_item_b active flip">
+                                <img src="img/velepogled.jpg" class="carousel_item_b">
+                                <img src="img/zdrilo.jpg" class="carousel_item_b">
+                                <img src="img/majstorska.jpg" class="carousel_item_b">
+                                <img src="img/zrmanja.jpg" class="carousel_item_b">
+                            </div>
+                            <div class="circle-multiple" data-aos="fade-zoom-in" data-aos-anchor-placement="top-center" data-aos="ease-out-sin" data-aos-duration="1000">
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                                        
+                </div>
+                <div class="row">
+                    <div class="contactform" id="bookingID">
+                        <form action="http://localhost:8080/booking" method="POST">
+                            <input class="datedropper-init" name="BookingDate" id="outward-date" placeholder="Pick a date!" type="text" data-dd-format="d-m-Y" data-dd-roundtrip="my-trip" data-dd-large-only="true">
+                            <input type="text" class="contact-info" id="fname" name="fname" placeholder="Your name">
+                            <input type="text" id="fname" name="e-mail" placeholder="e-mail">
+                            <input type="text" id="fname" name="contact-phone" placeholder="Phone">
+                            <textarea id="subject" name="subject" placeholder="Any questions?" style="height:200px"></textarea>
+                            <input type="submit" value="Submit">  
+                            
+                        <div class="col-xs-12">
+                            <div class="btn-lrg submit-btn"  onclick="ToggleClass('bookingID', 'maximize_right');">Cancel</div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="locationwrap" id="mapsID">
+                    <iframe id="mapsiframe"
+                        width="600"
+                        height="350"
+                        frameborder="0" class="Gmaps"
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDbRp6BT_pSGhcprXetW6fjx24TyQqI9Ug
+                            &q=Villa+Karukera+Rovanjska" allowfullscreen>
+                    </iframe>
+                    
+                    <div class="col-xs-12">
+                        <div class="btn-lrg submit-btn"  onclick="ToggleClass('mapsID', 'maximize_right'); ToggleClass('mapsiframe', 'gmapsfade')">Cancel</div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>Villa Croatia Zadar - Splitska 17 - 23243 Rovanjska, Jasenice - +385 99 
+                    460 19 70 - +33 6 07 40 15 86 - contact@villa-croatia-zadar.com</p>                    
+            </div>
+            <!-- CONTENT END -->
+
+
+        </div>
+
+
+
+        <!--################################################################################################-->
+                                            <!-- A N I M A T I O N-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="js/datedropper.pro.min.js"></script>
+        <script src="js/script.js"></script>
+        <script>
+            var prevScrollpos = window.pageYOffset;
+            window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos < currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-55px";
+            }
+            prevScrollpos = currentScrollPos;
+            }
+        </script>
+        <script>
+            
+document.addEventListener("DOMContentLoaded", () => {
+  const listOfLinks = document.querySelectorAll("a[href^='#sectionLink");
+  listOfLinks.forEach(function (link) {
+    link.addEventListener('click',  () => {
+
+      // get the element where to scroll
+      let ref = link.href.split('#sectionLink');
+      ref = "#section" + ref[1];
+
+      window.scroll({
+        behavior: 'smooth',
+        left: 0,
+        top: document.querySelector(ref).offsetTop
+      });
+      
+    })
+  })
+})
+        </script>
+        <!--################################################################################################-->
+    </body>
+
+
+        <!--################################################################################################
+
+                                     s                   _                                  
+                                    :8                  u                                   
+                                   .88           u.    88Nu.   u.                 .u    .   
+                                  :888ooo  ...ue888b  '88888.o888c       u      .d88B :@8c  
+                                -*8888888  888R Y888r  ^8888  8888    us888u.  ="8888f8888r 
+                                  8888     888R I888>   8888  8888 .@88 "8888"   4888>'88"  
+                                  8888     888R I888>   8888  8888 9888  9888    4888> '    
+                                  8888     888R I888>   8888  8888 9888  9888    4888>      
+                                 .8888Lu= u8888cJ888   .8888b.888P 9888  9888   .d888L .+   
+                                 ^%888*    "*888*P"     ^Y8888*""  9888  9888   ^"8888*"    
+                                   'Y"       'Y"          `Y"      "888*""888"     "Y"      
+                                                                    ^Y"   ^Y'              
+
+                                                roncevic.kresimir@gmail.com 
+                                                        092 3841 148
+
+        ####################################################################################################-->
+                                                            
+                                                            
+
+    
+</html>
+
+
+

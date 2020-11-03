@@ -1,0 +1,646 @@
+@import 'media';
+
+$display-narrow: 320;
+$display-wide: 567;
+
+@mixin fluid($property, $minValue, $maxValue){
+    $x: ($maxValue - $minValue)/($display-wide - $display-narrow);
+    $y: $maxValue - $display-wide * $x;
+    #{$property}: calc(#{100*$x}vw + #{$y}px);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100');
+@font-face {
+    font-family: 'Kollektif';
+    src:url('fonts/Kollektif.ttf') format('truetype');
+    src:url('fonts/Kollektif-Bold.ttf') format('truetype'),
+        url('fonts/Kollektif-BoldItalic.ttf') format('truetype'),
+        url('fonts/Kollektif-Italic.ttf') format('truetype')
+}
+@font-face {
+    font-family: 'Bodoni';
+    src:url('fonts/BodoniFLF-Roman.ttf') format('truetype');
+    src:url('fonts/BodoniFLF-Bold.ttf') format('truetype'),
+        url('fonts/BodoniFLF-BoldItalic.ttf') format('truetype'),
+        url('fonts/BodoniFLF-Italic.ttf') format('truetype')
+}
+
+$white: #EFEEEE;
+$gray: #9BD7D1;
+$green: #005955;
+$dark: #F26627;
+$light: #F9A26C;
+$pink: rgb(235, 113, 98);
+
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+@mixin Copy { 
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body{   
+    overflow-x: hidden;
+}
+#wrapper{
+    overflow: visible;
+    @include fluid('width', 1152, 1536);
+    display: block;
+    margin: 0 auto;
+}
+#banner{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    @mixin hwrap($wfloat, $wwidth, $hcolor, $strokecolor, $delay){
+        display:block;
+        float:$wfloat;
+        overflow: hidden;
+        width: $wwidth;
+        @include fluid('height', 220, 270);
+        h1{
+            position:relative;
+            font-family: 'Kollektif', sans-serif;
+            @include fluid('font-size', 200, 250);
+            color: transparent;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: $strokecolor; 
+
+            z-index: 9;
+            margin-top: 200px;
+            animation: .5s from-below #{$delay} ease forwards;
+
+            @keyframes from-below{
+                from{margin-top: 200px;}
+                to{margin-top: 0;}
+            }
+
+            &::before{
+                content:attr(data-text);
+                position: absolute;
+                z-index: -5;
+                color: $hcolor;
+                width: inherit;
+                opacity: 0;
+                animation: .1s tst 2.5s forwards;
+                @keyframes tst {
+                    from{opacity: 0}
+                    to{opacity: 1}
+                }                    
+            }
+        }
+    }
+    .h1wrap:nth-of-type(1){
+        @include hwrap(left, 100%, transparent, $dark, 2.2s);
+    }
+    .h1wrap:nth-of-type(2){
+        @include hwrap(left, '', $white, $white, 2.3s);
+    }
+    .h1wrap:nth-of-type(3){
+        @include hwrap(left, '', $white, $white, 2.4s);
+    }
+    .h1wrap:nth-of-type(4){
+        @include hwrap(right, '', $white, $white, 2.5s);
+    }
+}
+
+.down{   
+    display:block;
+    margin-top: 60px;
+    margin-left: 60px;
+    width: 15vw;
+    height: 15vw;
+    z-index: -9;
+    cursor: pointer;
+    
+    animation: breathe 2s ease-in-out infinite;
+    animation-direction: alternate;
+    transform-origin: center;
+    .circle{
+        position: absolute;
+        background-color: transparent;
+        @include fluid('width', 150, 300);
+        @include fluid('height', 150, 300);
+        border-radius: 50%;
+        border: solid 2px transparent;
+        border-color: $dark;
+        clip-path: circle(0% at 0% 100%);
+        animation: .5s circle-clip 3s ease-out forwards;
+    }
+    @keyframes circle-clip{
+        from{clip-path: circle(0% at 100% 0%);}
+        to{clip-path: circle(75%);}
+    }
+    .arrow{   
+        display: block;
+        position: absolute;
+        @include fluid('top', 37.5, 75);
+        @include fluid('left', 75, 150);
+        width: 20%;
+        @include fluid('height', 75, 150);  
+
+        span:first-of-type{ //arrow body
+            position: absolute;
+            display: block;
+            height: 99%;
+            width: 2px;
+            border-radius: 5px;
+            background-color: $dark;
+            opacity: 0;
+            z-index: 9999;
+            transform-origin: top;
+            
+            animation: .5s arrow-grow 3.5s forwards;
+            @keyframes arrow-grow{
+                from{opacity: 1;transform: scaleY(0)}
+                to{opacity: 1;transform: scaleY(1)}
+            }
+        }
+        @mixin arrow-hand($direction){
+            position: absolute;
+            display: block;
+            @include fluid('height', 40, 70);
+            width: 2px;
+            border-radius: 5px;
+            bottom:0;
+            left: 0;
+            opacity: 0;
+            transform: rotate(0deg);
+            transform-origin: $direction;
+            background-color: $dark;
+            z-index: 9999;
+
+            animation: .2s $direction 4s ease-out forwards;
+            @keyframes left{
+                from{
+                    opacity: 1;transform: rotate(0deg)}
+                to{
+                    opacity: 1;
+                    @include fluid('bottom', -6, -10);
+                    @include fluid('left', 14, 25);
+                    transform: rotate(45deg)}
+            }
+            @keyframes right{
+                from{
+                    opacity: 1;transform: rotate(0deg)}
+                to{
+                    opacity: 1;
+                    @include fluid('bottom', -6, -10);
+                    @include fluid('left', -14, -25);
+                    transform: rotate(-45deg)}
+            }
+        }
+        span:nth-of-type(2){
+            @include arrow-hand(left)
+        }
+        span:nth-of-type(3){
+            @include arrow-hand(right)                
+        }
+        @keyframes breathe{
+            from{transform: scale(1)}
+            to{transform: scale(1.02)}
+        }
+    }
+}
+
+
+.content{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    @include fluid('margin-left', -64, -192);
+    
+    .about{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color: #F0D4D2;
+        .text{
+            text-align: right;
+            display: block;
+            width: 20%;
+            margin: 20px;
+            margin-top: 150px;
+            h1{
+                font-family: "Kollektif",sans-serif;
+                font-weight: bold;
+                color: #F0D4D2;
+            }
+            p{
+                font-family: "Montserrat",sans-serif;
+                
+                color: #F0D4D2;
+            }
+        }
+        .image{
+            z-index: 9;
+            display: block;
+            width: 40%;
+            float: right;
+            margin: 0 10% 0 0;
+            img{
+                width: 100%;
+            }
+        }        
+    }
+
+
+    .about:nth-of-type(2){
+        margin-top: -100px;
+        padding-bottom: 200px;
+        .big-text{
+            text-align: right;
+            display: block;
+            width: 40%;
+            margin-right: 10%;
+            h1{
+                font-family: "Kollektif",sans-serif;
+                font-weight: bold;
+                font-size: 7vh;
+                color: #181717;
+            }
+            h1:nth-of-type(2){
+                width: 40%;
+                float: right;
+            }
+            h1:last-of-type{
+                color: $dark;
+                float: right;
+            }
+            p{
+                float: left;
+                display: block;
+                width: 50%;
+                padding-right: 20px;
+                text-align: right;
+                padding-top: 12px;
+                font-family: "montserrat",sans-serif;
+                font-size: 3vh;
+                color: #181717;
+            }
+        }
+        .anim{
+            margin-left: 10%;
+            display: block;
+            width: 200px;
+            position: relative;
+            .circle{
+                left: 0;
+                top: 10px;
+                position: absolute;
+                height: 80px;
+                width: 80px;
+                background-color: $pink;
+                border-radius: 100%;
+                
+            }
+            [data-aos="pinkcircle"] {
+                transform: scale(0);
+                transition-property: transform;
+                transform-origin: center;
+                &.aos-animate {
+                transform: scale(1);
+                }
+            }
+            $half-circle-size: 120px;
+            .half-circle {
+            position: absolute;
+            left: 80px;
+            top: 0;
+            background: #005955;
+            display: inline-block;
+            margin: 10px 1em 1em 0;
+            height: $half-circle-size*2;
+            width: $half-circle-size;
+            border-bottom-right-radius: $half-circle-size * 2;
+            border-top-right-radius: $half-circle-size * 2;
+            }
+                    
+            [data-aos="halfcircle"] {
+                transform: scale(0) rotate(90deg);
+                transition-property: transform;
+                transform-origin: bottom;
+                &.aos-animate {
+                transform: scale(1) rotate(0);
+                }
+            }
+        }
+    }
+    
+    .about:nth-of-type(3){
+        background-color: transparent;
+        backdrop-filter: hue-rotate(0deg);
+        .moving-text{
+            margin-top: -90px;
+            display: flex;
+            width: 100%;
+            h1{
+                font-family: "Kollektif",sans-serif;
+                font-weight: bold;
+                font-size: 12vh;
+                color: white;
+                margin-right: 50px;
+                span{
+                    color: $pink;
+                }
+            }
+            h1:nth-of-type(2){
+                width: 40%;
+                color:transparent;
+                -webkit-text-stroke-width: 2px;
+                -webkit-text-stroke-color: $white;
+                span{
+                    color: transparent;
+                    -webkit-text-stroke-color: $pink;
+                }
+            }
+            p{
+                float: left;
+                display: block;
+                width: 60%;
+                text-align: right;
+                padding-top: 12px;
+                font-family: "montserrat",sans-serif;
+                font-weight: bold;
+                font-size: 3vh;
+                color: #181717;
+            }
+            animation: scroll 10s linear infinite;
+            @keyframes scroll{
+                from{transform:translateX(0)}
+                to{transform:translateX(100%)}
+            }
+        }
+    }
+
+    #gallery{
+        height: 70vh;
+        display: flex;
+        .text{
+            display:flex;
+            flex-direction: column;
+            padding-top: 150px;
+            width: 400px;
+        }
+        h3{
+            font-family: "Bodoni",sans-serif;
+            font-size: 7vh;
+            color: $light;
+            margin-top: 50px;
+            margin-right: 50px;
+            text-align: right;
+        }
+        p{
+            font-family: "Montserrat",sans-serif;
+            text-align: right;
+            font-size: 3vh;
+            color: #F0D4D2;
+            margin-right: 50px;
+        }
+        h2{
+            font-family: "Kollektif",sans-serif;
+            font-size: 7vh;
+            color: $pink;
+            margin-right: 50px;
+        }
+    }
+
+}
+
+
+
+
+
+#page_loader{
+    position: fixed;
+    font-family: "montserrat";
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #181717;
+    animation: .4s fade-out 2s ease-in-out forwards;
+    z-index: 999;
+    pointer-events: none;
+    @keyframes fade-out {
+        from{opacity: 1;} to{opacity: 0;}
+    }
+    .glitch {
+        position: relative;
+        color: $white;
+        top: 33%;
+        font-size: 4em;
+        letter-spacing: .5em;
+        animation: glitch-skew 1s infinite linear alternate-reverse, .4s fade-out 1.7s ease-in forwards;;
+        &::before{
+            @include Copy;
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        &::after {
+            @include Copy;
+            left: -2px;
+            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+            animation: glitch-anim2 1s infinite linear alternate-reverse;
+        }
+    }
+    @keyframes glitch-anim {
+        $steps: 20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))} {
+                clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+                transform: skew((random(100) / 100) + deg);
+            }
+        }
+    }
+    @keyframes glitch-anim2 {
+        $steps: 20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))} {
+                clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+                transform: skew((random(100) / 100) + deg);
+            }
+        }
+    }
+    @keyframes glitch-skew {
+        $steps: 10;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))} {
+                transform: skew((random(10) - 5) + deg);
+            }
+        }
+    }
+}
+
+#navbar {
+    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    transition: top 1s;
+    ul{
+        display: flex;
+        justify-content: flex-end;
+        margin: 0;
+        padding-right: 10%;
+        li{
+            font-family: 'Kollektif';
+            font-size: large;
+            color: $white;
+            display: block;
+            padding: 15px 25px;
+            margin-left: 5%;
+            transition: all .2s ease;
+            &:hover{
+                cursor: pointer;
+            }
+                
+            &:after {    
+                background: none repeat scroll 0 0 transparent;
+                content: "";
+                display: block;
+                height: 2px;
+                background: $dark;
+                transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                width: 0;
+                margin: 3px 0 0 -12%;
+            }
+            &:hover:after { 
+                width: 125%;
+            }
+        }
+    }
+}
+#burger-nav{
+    #fullscreen-nav{
+        position: fixed;
+        display:flex;
+        width:100%;
+        height:100%;
+        background-color: $light;
+        clip-path: circle(0% at 93% 13%);
+        transition: clip-path .5s ease;
+        z-index: 150;
+        .links{
+            margin-left: 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            width: 60%;
+            height: 100vh;
+            @mixin fsnav-link($delay){
+                display: block;
+                overflow: hidden;
+                height: 15vh;
+                padding-top: 2px;
+                h1 {
+                    position: relative;
+                    font-family: 'Kollektif', sans-serif;
+                    font-size: 8vw;
+                    line-height: 110%;
+                    z-index: 9;
+                    color: $gray;
+                    -webkit-text-stroke-width: 2px;
+                    -webkit-text-stroke-color: $gray;
+                    text-decoration: none;
+                    margin-top: 200px;
+                    transition: color .2s ease, margin-top .2s $delay ease;
+                    &::before{
+                        content:attr(data-text);
+                        position: absolute;
+                        z-index: 99;
+                        color: transparent;
+                        width: inherit;
+                    }
+                    &:hover{
+                        cursor: pointer;
+                        color: transparent;
+                    }
+                }
+            }
+            .h1wrap:nth-of-type(1){
+                @include fsnav-link(.2s)
+            }
+            .h1wrap:nth-of-type(2){
+                @include fsnav-link(.3s)
+            }
+            .h1wrap:nth-of-type(3){
+                @include fsnav-link(.4s)
+            }
+        }
+        .contact-info{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            float: left;
+            width: 35%;
+            color: $gray;
+            h2{
+                font-family: "Montserrat", sans-serif;
+                margin-bottom: 15px;
+                font-weight: bolder;
+            }
+            p{
+                font-family: "Montserrat", sans-serif;
+                font-weight: bold;
+            }
+            
+        }
+    }
+    #burger{
+        display: block;
+        margin: 20px; 
+        background-color: $light;
+        top: -80px;
+        right: 60px;
+        position: fixed;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        transition: top .75s ease, transform .2s ease;
+        z-index: 998;
+        &:hover{
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        span:first-of-type {
+            position: absolute;
+            display: block;
+            height: 4px;
+            width: 35px;
+            border-radius: 2px;
+            background: white;
+            left: 9.5px;
+            top: 20px;
+            transition: all .3s ease;
+        }
+        span:last-of-type {
+            position: absolute;
+            display: block;
+            top: 31px;
+            left: 9.5px;
+            height: 4px;
+            width: 35px;
+            border-radius: 2px;
+            background: white;
+            transition: all .3s ease;
+        }        
+    }
+}
