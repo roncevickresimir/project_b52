@@ -1,0 +1,185 @@
+<script>
+            var textWrapper = document.querySelector('.ml9 .letters');
+            textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+            
+            anime.timeline({loop: false})
+            .add({
+                targets: '.ml9 .letter',
+                scale: [0, 1],
+                duration: 2000,
+                elasticity: 600,
+                delay: (el, i) => 45 * (i+1)
+            }).add({
+                targets: '.ml9',
+                opacity: 1,
+                duration: 1500,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+</script>
+
+
+
+
+
+
+
+
+
+        <script>
+            var prevScrollpos = window.pageYOffset;
+            window.onscroll = function() {
+                var currentScrollPos = window.pageYOffset;
+                if (currentScrollPos < 50) {
+                    document.getElementById("navbar").style.opacity = "1";
+                } else {
+                    document.getElementById("navbar").style.opacity = "0";
+                }
+                if (currentScrollPos > 500) {
+                    document.getElementById("sadrzaj").style.background = "#e1b382";
+                    document.getElementById("slike").style.marginLeft = "50%";
+                } else {
+                    document.getElementById("sadrzaj").style.background = "white";   
+                    document.getElementById("slike").style.marginLeft = "105%"; 
+                }
+                prevScrollpos = currentScrollPos;
+                if (currentScrollPos > 0 && currentScrollPos < 1400) {
+                    document.getElementById("opis1").style.opacity = "1";
+                } else {
+                    document.getElementById("opis1").style.opacity = "0";
+                }
+                if (currentScrollPos > 1450 && currentScrollPos < 1800) {
+                    document.getElementById("opis2").style.opacity = "1";
+                } else {
+                    document.getElementById("opis2").style.opacity = "0";
+                }
+                if (currentScrollPos > 1850 && currentScrollPos < 2200) {
+                    document.getElementById("opis3").style.opacity = "1";
+                } else {
+                    document.getElementById("opis3").style.opacity = "0";
+                }
+                if (currentScrollPos > 2250 && currentScrollPos < 2600) {
+                    document.getElementById("opis4").style.opacity = "1";
+                } else {
+                    document.getElementById("opis4").style.opacity = "0";
+                }
+            }
+        </script>
+        <script>
+            var slika = document.getElementById("slika1");
+            function desi(el){
+                var viewportOffset = el.getBoundingClientRect();
+                return {
+                    top : viewportOffset.top + window.scrollY,
+                    left : viewportOffset.left
+                }
+            }         
+            console.log(desi(slika).top, desi(slika).left);
+            
+        </script>
+
+
+        
+Iskušajte bungee jump s najveće visine u Hrvatskoj, starog Masleničkog mosta! 
+Pokrenite dozu adrenalina leteći do samo 5 m iznad površine, gdje će vas konopac zaustaviti. Bilo da ste početnik ili stari skakački lisac - bit ćete jednako uzbuđeni! 
+
+Ljubitelji kretanja na dva kotača atrakcije šireg područja mogu obići i na biciklu. Područje Općine Jasenice je jedno od najljepših područja u Zadarskoj županiji za sve ljubitelje biciklizma. Vožnja po Majstorskoj cesti ostavlja bez daha, kao i uspon na Tulove grede.
+Uživanje u čistom zraku i nezaboravnom pogledu na zadarsko zaleđe i arhipelag s više od 1000 metara visine. U podnožju Tulovih greda započinje nova avantura – spust biciklima niz padine Velebita do prve stanice za odmor – kapelice i jednog od najljepših vidikovaca na ovoj cesti. Kapelica je podignuta u čast jednog od heroja Domovinskog rata, Damira Tomljanović Gavrana, zapovjednika legendarnih Tigrova.
+Ubrzo nakon toga slijedi zaustavljanje na drugoj dionici spusta, u blizini stijene koja nadvisuje cestu. Zatim, nastavak puta prema crkvi Sv. Frane koju je izgradio austrijski car Franjo I. u spomen na novoizgrađenu Majstorsku cestu, prvu koja je povezala kontinentalnu Hrvatsku s Dalmacijom. Sljedeće odredište je rodna kuća Luke Modrića, najboljeg europskog i svjetskog nogometaša u 2018 godini i jednog od glavnih igrača slavnog Real Madrida. Nastavak puta asfaltiranom cestom do vidikovca veličanstvenog kanjona rijeke Zrmanje. Na ovoj lokaciji snimljene su brojne filmske scene o Winnetou, indijanskom poglavici, glavnom liku romana Karl May-a.
+
+
+Zrmanja započinje svoje 69 kilometara dugo putovanje u južnom dijelu planine Plješevice. Na svojem putu prema Novigradskom moru, u koje se ulijeva, prolazi kroz uske doline i veličanstveni 200 metara dubok kanjon.
+Ona je tipična krška rijeka – ima brojne slapove i snažne brzace, što ju čini idealnom rijekom za sportove na divljim vodama.
+Ljubitelji raftinga su ju nazvali ljepoticom i zvijeri, jer je, za vrijeme visokih vodostaja, jedna od najboljih rijeka za rafting u ovom dijelu Europe. S druge strane, Zrmanja je sa svojom pritokom Krupom, tijekom ljeta mirna i spokojna, te lagano nosi posjetitelje kroz očaravajući krajolik.
+
+
+Zavirite u podzemni svijet Velebita! Sazdana od krša, planina Velebit obiluje spiljama, a u speleo avanturu povest će vas stručni vodiči.
+U mjestu Rovanjska, nalazi se dragulj planine Velebit, špilja Modrič. Špilja Modrič je prirodna špilja, što znači da se nakon njenog otkrića u njoj nije interveniralo ništa, već je ostavljena u svom prirodnom stanju. Pristup imaju samo speleolozi i koncesionar na izlete u špilju, iskusni speleolog Marijan iz agencije „Zara Adventure“. Izlet započinje okupljanjem izletnika u Rovanjskoj, gdje će Vam Vaš vodić podijeliti Vašu opremu: zaštitno odijelo i kacigu sa svjetlom (električna lampica ili karabitni plamen). Nakon kratke šetnje kroz borovu šumu dolazite do ulaza u špilju. Avantura počinje, i slijedeća 2 sata provodite provlačeči se kroz prolaze i prolazeći kroz velike dvorane čarobno ukrašene stalagmitima i stalaktitima. Vaš vodić je iskusan speleolog koji na zanimljiv način objašnjava sve što Vas zanima. U špilji nema rukohvata niti betoniranih staza kao ni umjetnog svjetla, stoga ovaj izlet nije pogodan za osobe s poteškoćama pri hodanju, kao ni za djecu mlađu od 7 godina. Za sve druge ovo je jedan od najzanimljivijih izleta u Dalmaciji koji će još dugo ostati u lijepom sjećanju. Preporučamo svakako posjetiti spilju Manita peć u NP Paklenica, te Cerovačke pećine u blizini gradića Gračac, obje zaštićeni geomorfološki spomenici prirode i uređene za turistički obilazak. Postoje i druge spilje dostupne posjetiteljima, atraktivne zbog raznolikosti oblika i bogatstva sigastih ukrasa i drugih spiljskih tvorevina.
+
+
+Kornatski arhipelag nezaobilazna je destinacija vašega ljetovanja. Svakako vrijedi vidjeti „Krune“-okomite litice kornatskih otoka okrenute prema otvorenom moru. S vidikovaca Metlina, Otočevac, Opat, Vrujsko, Litnji vrh... rajski je pogled.
+Na Kornatima možete vidjeti građevine iz doba Bizanta Utvrdu Tureta, iz srednjeg vijeka crkvica Gospe od Tarca kao i ostatke skladišta za sol i ostatke solane u uvali Lasa. Zaplivajte i zaronite u dubine kristalno čistog mora.
+www.np-kornati.hr
+
+
+Svoje ljetovanje obogatite izletom u NP Krka, gdje će vas dočekati najduži slap na rijeci Krki Skradinski buk s kojega možete brodom posjetiti otočić Visovac na kojem se nalazi franjevački samostan iz 15.st. Ljubitelji biljnih i životinjskih vrsta zadovoljstvo će naći na Poučno pješačkoj stazi Stinice.
+Brodskim prijevozom s Roškog slapa možete posjetiti Manastir Krka, Burnum, amfiteatar, rimski vojni logor arheološki je lokalitet na području NP Krka nedaleko od Kistanja.
+www.npkrka.hr
+
+Za ljubitelje planinarenja i pješačenja posjet Nacionalnom parku Paklenica pravi je izbor.
+Šetnju i planinarenje obogatite ulaskom u špilju Manita peć koja će vas oduševiti svojim ukrasima, sigama, špiljskim kaskadama i bogatstvom podzemne faune. U turističkoj ponudi NP Paklenica su šumarska kuća, etno kuća, stari mlin, edukacijski centar, prezentacijski centar, kamp te raznolika ugostiteljska ponuda.
+www.np-paklenica.hr
+
+Najveći i najstariji hrvatski Nacionalni park Plitvička jezera pružit će vam nezaboravni prizor sa 16 jezera različite veličine i bezbroj slapova iznimne ljepote. Šetnja šumskim stazama i drvenim mostićima uvjerit će vas zašto je NP član UNESCO-ve obitelji.
+www.np-plitvicka-jezera.hr
+
+
+Provedite jedan dan u najljepšoj i najvećoj prirodnoj luci u Jadranskom moru. Istražite uvalu s 13 otoka i otočića, zaplivajte u slanom jezeru Mir, zaronite u blizini divljih i strmih klifova i ne propustite pogled s vidikovca Grpašćak. Miris brojnog mediteranskog bilja bit će vam ljekovita i terapijska pratnja.
+www.pp-telascica.hr
+
+Velebit je oduvijek spajao priobalje s ličkim zaleđem u jedinstvenu gospodarsku, kulturnu i povijesnu cjelinu. Njegovim je cestama kroz razmjenu dobara kolala raznovrsna roba. U tu je svrhu prometno povezivanje bilo iznimno važno – od antičkih vremena do danas. Radi razvoja gospodarstva, trgovine i prometa, Habsburška Monarhija je u 18. i 19. stoljeću izgradila nekoliko značajnih cesta preko Velebita. Graditelji cesta odlikovali su se iznimnom stručnošću, te je većina tih cesta, uz poneku rekonstrukciju, u uporabi i u današnje vrijeme.
+www.pp-velebit.hr
+
+
+plava 3a4660
+ten c9af98
+krem ed8a63
+smeda 845007
+
+plava 2d545e
+tamnoplava 12343b
+ten e1b382
+tamnoten c89666
+
+
+
+<div class="description" id="desc1" data-aos="fade-up">
+    <h1><i>in Rawna</i></h1>
+    <p>Rovanjska je smještena u uvali na samom kraju podvelebitskog kanala, 
+        nedaleko od Zadra sa baštinom duljom od 1200 godina, kada se u pisanim izvorima 
+        Rovanjska naziva "in Rawna".</p>
+</div>
+<div class="description" id="desc2">
+    <h1><i>Bungee!</i></h1>
+    <p>Iskušajte bungee jump s najveće visine u Hrvatskoj, starog Masleničkog mosta! 
+        Pokrenite dozu adrenalina leteći do samo 5 m iznad površine, gdje će vas 
+        konopac zaustaviti. Bilo da ste početnik ili stari skakački lisac - bit ćete jednako uzbuđeni! </p>
+</div>
+<div class="description" id="desc3">
+    <h1><i>Rafting</i></h1>
+    <p>Zrmanja na svojem putu prema Novigradskom moru, prolazi kroz uske doline i veličanstveni 
+        200 metara dubok kanjon. Ljubitelji raftinga su ju nazvali ljepoticom i zvijeri, no 
+        tijekom ljeta mirna je i spokojna, te lagano nosi posjetitelje kroz očaravajući krajolik.</p>
+</div>
+<div class="description" id="desc4">
+    <h1>Spilja Modrič</h1>
+    <p>Zavirite u podzemni svijet Velebita! Sazdana od krša, planina Velebit obiluje spiljama, a u 
+        speleo avanturu povest će vas stručni vodiči. U mjestu Rovanjska, nalazi se dragulj planine Velebit, 
+        špilja Modrič.</p>
+</div>
+<div class="slike_wrap">
+    <div class="slike" id="slike">
+        <img class="desno" id="slika1" src="img/most.jpg">
+        <img class="desno" id="slika2" src="img/zrmanja.jpg">
+        <img class="desno" id="slika3" src="img/end_banner_xl.jpg">
+    </div>
+</div>
+<div class="opis_lijevo" id="opis4">
+    <h1>Kornati</h1>
+    <p>Kornatski arhipelag nezaobilazna je destinacija vašega ljetovanja. Svakako vrijedi vidjeti 
+        „Krune“-okomite litice kornatskih otoka okrenute prema otvorenom moru te građevine iz doba Bizanta. 
+        Zaplivajte i zaronite u dubine kristalno čistog mora.
+    </p><br><a>www.np-kornati.hr</a>
+
+</div>
+<div class="opis_desno" id="opis4">
+    <h1>Spilja Modrič</h1>
+    <p>Zavirite u podzemni svijet Velebita! Sazdana od krša, planina Velebit obiluje spiljama, a u 
+        speleo avanturu povest će vas stručni vodiči. U mjestu Rovanjska, nalazi se dragulj planine Velebit, 
+        špilja Modrič.</p>
+</div>
+
+
+
+var elmnt = document.getElementById("content");
+elmnt.scrollIntoView();
