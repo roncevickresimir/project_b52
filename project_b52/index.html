@@ -137,16 +137,27 @@
                     <p>Take a step. Push for more.</br>Grow bold.</p>
                 </div>
                 <div class="desc">
-                    <p><span>Villa Karukera </span>sets example that
+                    <div class="project_wrap">
+                    <div class="worklink rellax" data-rellax-speed="2">
+                        <a href="/karukera/public/index.html"><img class="rellax" data-rellax-speed="-1" src="house.jpg"></a>
+                    </div>
+                    <p class="rellax" data-rellax-speed="2"><span>Villa Karukera </span>sets example that
                         will help guide future marketing strategies, 
                         and strenghten its position as 
-                        a premium product with global appeal.</p>
-                    
-                        <div class="worklink">
-                            <a href="/karukera/public/index.html"><img class="rellax" data-rellax-speed="-3" src="house.jpg"></a>
-                        </div>
+                        a premium product with global appeal.
+                    </p>    
+                    </div>      
+                    <div class="project_wrap">
+                    <div class="worklink rellax" data-rellax-speed="2">
+                        <a href="/old_fashioned/index.html"><img class="rellax" data-rellax-speed="-1" src="old_fashioned/img/unutra3.jpg"></a>
                     </div>
+                    <p class="rellax" data-rellax-speed="2"><span>Old Fashioned caffe</span> is a small neighbourhood living room. 
+                        A simple, but much needed contact site.
+                    </p>
+                    </div>
+                </div>
             </div>
+            
 
             <div id="contacts">
                 <div class="contact-info">
@@ -181,7 +192,6 @@
     let scrollRef = 0;
 
     window.addEventListener('scroll', function() {
-    // increase value up to 10, then refresh AOS
     scrollRef <= 10 ? scrollRef++ : AOS.refresh();
     });
 </script>
